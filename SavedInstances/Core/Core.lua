@@ -2516,11 +2516,11 @@ end
 
 function SI:OnInitialize()
   local versionString = C_AddOns.GetAddOnMetadata("SavedInstances", "version")
-  --@debug@
-  if versionString == "@project-version@" then
+  --[==[@debug@
+  if versionString == "11.1.0" then
     versionString = "Dev"
   end
-  --@end-debug@
+  --@end-debug@]==]
   SI.version = versionString
 
   SavedInstancesDB = SavedInstancesDB or SI.defaultDB
@@ -4254,10 +4254,10 @@ function SI:ShowTooltip(anchorframe)
               earned = CurrencyColor(ci.amount, ci.totalMax) .. totalmax
             end
             local str
-            if (ci.amount or 0) > 0 or (ci.earnedThisWeek or 0) > 0 or (ci.totalEarned or 0) > 0 then
+            if (ci.amount or 0) > 0 or (ci.earnedThisWeek or 0) > 0 or (ci.totalEarned or 0) > 0 or (ci.relatedItemCount or 0) > 0 then
               if (ci.weeklyMax or 0) > 0 then
                 str = earned .. " (" .. CurrencyColor(ci.earnedThisWeek, ci.weeklyMax) .. weeklymax .. ")"
-              elseif (ci.amount or 0) > 0 or (ci.totalEarned or 0) > 0 then
+              elseif (ci.amount or 0) > 0 or (ci.totalEarned or 0) > 0 or (ci.relatedItemCount or 0) > 0 then
                 str = CurrencyColor(ci.amount, ci.totalMax, ci.totalEarned) .. totalmax
               end
               if SI.specialCurrency[idx] and SI.specialCurrency[idx].relatedItem then
